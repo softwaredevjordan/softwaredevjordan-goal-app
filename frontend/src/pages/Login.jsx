@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-//3rd party libraies
+//3rd party libraries
 import { toast } from "react-toastify";
 
 //context
@@ -23,14 +23,15 @@ function Login() {
   );
 
   const navigate = useNavigate();
-
+  
+  //navigate the user back to the home page after a successful login
   useEffect(() => {
     if (isSuccess === true) {
       dispatch({ type: "RESET" });
       navigate("/");
     }
   });
-
+  //allows user input in the form
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -88,7 +89,7 @@ function Login() {
               required
             />
           </div>
-          <div className="form-group btn btn-outline-primary my-2">
+          <div className="form-group btn btn-outline-success my-2">
             <button className="btn btn-block">Submit</button>
           </div>
         </form>

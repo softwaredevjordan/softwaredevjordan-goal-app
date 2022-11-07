@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
 
     if (response.data) {
       localStorage.setItem("user", JSON.stringify(response.data));
-      dispatch({ type: "LOGIN", payload: userData.name });
+      dispatch({ type: "LOGIN" });
       dispatch({ type: "SUCCESS" });
     }
   };

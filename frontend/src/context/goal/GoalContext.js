@@ -12,7 +12,7 @@ const GoalContext = createContext();
 export const GoalProvider = ({ children }) => {
   const initialState = {
     goals: [],
-    goal: {},
+    goal: {_id: "3",user:"3",goalname: "a",goalDescription:"a",__v:"0"},
     goalname: "",
     goalDescription: "",
     posted: false,
@@ -47,7 +47,49 @@ export const GoalProvider = ({ children }) => {
 
     const response = await axios.get(API_URL, config);
     dispatch({ type: "GOALS_LOADING", payload: response.data });
+
+    return response.data;
   };
+
+  const getGoal = async (id) => {
+    const GETGOAL_API =  (API_URL + "/" + id)
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    };
+    const response = await axios.get(GETGOAL_API, config);
+    dispatch({type: "GOAL_LOADING", payload: response.data});
+    
+    return response.data;
+  }
+
+  const deleteGoal = async (id) => {
+    const DELETE_API =  (API_URL + "/" + id)
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    };
+    const response = await axios.delete(DELETE_API, config);
+    
+    return response.data;
+  }
+
+  const updateGoal = async (id,goalData) => {
+    const UPDATE_API = (API_URL + "/" + id)
+    console.log('active')
+    console.log(UPDATE_API)
+    console.log(goalData)
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      }
+    }
+    const response = await axios.put(UPDATE_API,goalData,config)
+
+    return response.data;
+  }
 
   return (
     <GoalContext.Provider
@@ -62,6 +104,9 @@ export const GoalProvider = ({ children }) => {
         dispatch,
         createGoal,
         getGoals,
+        getGoal,
+        deleteGoal,
+        updateGoal,
       }}
     >
       {children}

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 //3rd party libraies
 import { toast } from "react-toastify";
+
 //context
 import AuthContext from "../context/auth/AuthContext";
 
@@ -24,7 +25,8 @@ function Register() {
   );
 
   const navigate = useNavigate();
-
+  
+  //this useEffect after successful registration will login the user & navigate them to the home page
   useEffect(() => {
     if (isSuccess === true) {
       const loginInfo = { email, password };
@@ -33,7 +35,8 @@ function Register() {
       navigate("/");
     }
   }, [isSuccess]);
-
+  
+  //allows user input in the form
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,

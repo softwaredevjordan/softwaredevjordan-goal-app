@@ -4,13 +4,14 @@ const authReducer = (state, action) => {
       return {
         ...state,
         loggedIn: true,
-        user: action.payload,
+        
       };
     case "LOGOUT":
       return {
         ...state,
         loggedIn: false,
         user: null,
+        name: null,
       };
     case "SUCCESS":
       return {

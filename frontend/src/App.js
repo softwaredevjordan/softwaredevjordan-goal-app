@@ -12,6 +12,7 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import NewGoal from "./pages/NewGoal";
+import EditGoal from "./pages/EditGoal";
 
 //context
 import { AuthProvider } from "./context/auth/AuthContext";
@@ -30,6 +31,9 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/new-goal" element={<PrivateRoute />}>
                 <Route path="/new-goal" element={<NewGoal />} />
+              </Route>
+              <Route path="/:goalId" element={<PrivateRoute/>}>
+                <Route path="/:goalId" element={<EditGoal/>}/>
               </Route>
             </Routes>
           </Router>

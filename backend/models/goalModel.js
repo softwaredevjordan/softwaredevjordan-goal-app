@@ -14,15 +14,7 @@ const goalSchema = mongoose.Schema({
     type: String,
     required: [true, "Please explain how you are going to acheive this goal"],
   },
-  isDone: {
-    type: Boolean,
-    required: true,
-    default: false,
-  },
-  // deadline: {
-  //   type: Date,
-  //   required: [true, "Please add a Deadline"],
-  // },
+ 
 });
 
 module.exports = mongoose.model("Goal", goalSchema);

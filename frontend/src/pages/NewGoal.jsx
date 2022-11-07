@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 //contexts
 import GoalContext from "../context/goal/GoalContext";
 import AuthContext from "../context/auth/AuthContext";
+
+//3rd party libraries
 import { toast } from "react-toastify";
 
 function NewGoal() {

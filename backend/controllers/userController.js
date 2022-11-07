@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
+//MongoDB models
 const User = require("../models/userModel");
 
 // @desc Register a new user
@@ -9,6 +9,7 @@ const User = require("../models/userModel");
 // @access public
 
 const registerUser = asyncHandler(async (req, res) => {
+
   const { name, email, password } = req.body;
 
   //Validation
@@ -35,6 +36,7 @@ const registerUser = asyncHandler(async (req, res) => {
     email,
     password: hashedPassword,
   });
+  
   if (user) {
     res.status(201).json({
       id: user._id,

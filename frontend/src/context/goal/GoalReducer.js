@@ -6,7 +6,13 @@ const goalReducer = (state, action) => {
         loading: true,
         goals: action.payload,
       };
-    case "GOALS_LOADED":
+      case "GOAL_LOADING":
+      return {
+        ...state,
+        loading: true,
+        goal: action.payload,
+      };
+    case "LOADED":
       return {
         ...state,
         loading: false,
